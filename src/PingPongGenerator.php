@@ -1,6 +1,6 @@
 <?php
     class PingPongGenerator {
-        private $countTo;
+        private $outputString;
 
         function generatePingPongArray($number) {
             $outputArray = array();
@@ -18,8 +18,19 @@
                 }
 
             }
-            return implode(" ", $outputArray);
+            $this->outputString = $outputArray;
         }
+
+        function save()
+        {
+            array_push($_SESSION['ping-pong-session'], $this->getOutputString());
+        }
+
+        function getOutputString() {
+            return $this->outputString;
+        }
+
+
 
 
     }
